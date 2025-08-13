@@ -10,14 +10,13 @@
 
 #include "main.h"
 
-typedef enum
+enum
 {
 	CLICK_OFF,
 	CLICK_UP = 2,
 	CLICK_DOWN
-}doubleButtonStateTypedef;
+};
 
-static doubleButtonStateTypedef doubleButtonState;
 
 void vDoubleButtonState(uint8_t state);
 

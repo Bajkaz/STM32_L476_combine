@@ -10,13 +10,12 @@
 
 #include "main.h"
 
-typedef enum
+enum
 {
 	MICROSWITCH_OFF,
 	MICROSWITCH_ON
-}microswitchStateTypedef;
+};
 
-static microswitchStateTypedef microswitchState;
 
 void vMicroswitchState(uint8_t state);
 

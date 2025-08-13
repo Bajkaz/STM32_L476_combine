@@ -10,13 +10,12 @@
 
 #include "main.h"
 
-typedef enum
+enum
 {
 	STOP_BUTTON_OFF,
 	STOP_BUTTON_ON
-}stopButtonStateTypedef;
+};
 
-static stopButtonStateTypedef stopButtonState;
 
 void vStopButtonState(uint8_t state);
 

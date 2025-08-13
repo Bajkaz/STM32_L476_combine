@@ -18,7 +18,7 @@ void vEngineState(uint8_t state)
 
 			break;
 		default:
-			engineState = ENGINE_OFF;
+			;
 			break;
 	}
 }

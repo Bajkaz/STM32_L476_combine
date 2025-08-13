@@ -10,13 +10,13 @@
 
 #include "main.h"
 
-typedef enum
+enum
 {
 	ENGINE_OFF,
 	ENGINE_ON
-}engineStateTypedef;
+};
 
-static engineStateTypedef engineState;
+
 
 void vEngineState(uint8_t state);
 

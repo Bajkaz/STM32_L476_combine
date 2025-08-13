@@ -10,13 +10,11 @@
 
 #include "main.h"
 
-typedef enum
+enum
 {
 	WATER_PUMP_OFF,
 	WATER_PUMP_ON
-}waterPumpStateTypedef;
-
-static waterPumpStateTypedef waterPumpState;
+};
 
 void vWaterPumpState(uint8_t state);
 

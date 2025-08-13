@@ -10,13 +10,11 @@
 
 #include "main.h"
 
-typedef enum
+enum
 {
 	BLINK_OFF,
 	BLINK_ON
-}diodesStateTypdef;
-
-static diodesStateTypdef diodesState;
+};
 
 void vDiodesState(uint8_t state);
 

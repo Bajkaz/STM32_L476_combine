@@ -27,6 +27,7 @@
 #include "microswitch.h"
 #include "stop_button.h"
 #include "water_pump.h"
+#include "external_device.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,6 +100,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
 
 
   }

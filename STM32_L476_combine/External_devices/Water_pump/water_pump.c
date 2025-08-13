@@ -18,7 +18,7 @@ void vWaterPumpState(uint8_t state)
 
 			break;
 		default:
-			waterPumpState = WATER_PUMP_OFF;
+			;
 			break;
 	}
 }

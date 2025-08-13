@@ -18,7 +18,7 @@ void vMicroswitchState(uint8_t state)
 
 			break;
 		default:
-			microswitchState = MICROSWITCH_OFF;
+			;
 			break;
 	}
 }

@@ -18,7 +18,7 @@ void vDiodesState(uint8_t state)
 
 			break;
 		default:
-			diodesState = BLINK_ON;
+			;
 			break;
 	}
 }

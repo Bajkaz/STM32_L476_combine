@@ -18,7 +18,7 @@ void vStopButtonState(uint8_t state)
 
 			break;
 		default:
-			stopButtonState = STOP_BUTTON_OFF;
+			;
 			break;
 	}
 }

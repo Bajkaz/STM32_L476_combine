@@ -21,7 +21,7 @@ void vDoubleButtonState(uint8_t state)
 
 			break;
 		default:
-			doubleButtonState = CLICK_OFF;
+			;
 			break;
 	}
 }
