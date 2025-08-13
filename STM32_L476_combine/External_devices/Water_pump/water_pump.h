@@ -8,6 +8,16 @@
 #ifndef WATER_PUMP_WATER_PUMP_H_
 #define WATER_PUMP_WATER_PUMP_H_
 
+#include "main.h"
 
+typedef enum
+{
+	WATER_PUMP_OFF,
+	WATER_PUMP_ON
+}waterPumpStateTypedef;
+
+static waterPumpStateTypedef waterPumpState;
+
+void vWaterPumpState(uint8_t state);
 
 #endif /* WATER_PUMP_WATER_PUMP_H_ */

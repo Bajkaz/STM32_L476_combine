@@ -8,6 +8,16 @@
 #ifndef STOP_BUTTON_STOP_BUTTON_H_
 #define STOP_BUTTON_STOP_BUTTON_H_
 
+#include "main.h"
 
+typedef enum
+{
+	STOP_BUTTON_OFF,
+	STOP_BUTTON_ON
+}stopButtonStateTypedef;
+
+static stopButtonStateTypedef stopButtonState;
+
+void vStopButtonState(uint8_t state);
 
 #endif /* STOP_BUTTON_STOP_BUTTON_H_ */
