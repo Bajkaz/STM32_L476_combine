@@ -48,7 +48,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+externalDeviceStateTypedef deviceState;
 
+uint8_t gExternalDevice;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,8 +103,30 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-
-
+	  switch (gExternalDevice)
+	  {
+		case EXTERNAL_DEVICE_DIODES:
+			vDiodesState(deviceState.diodes);
+			break;
+		case EXTERNAL_DEVICE_DOUBLE_BUTTON:
+			vDoubleButtonState(deviceState.doubleButton);
+			break;
+		case EXTERNAL_DEVICE_ENGINE:
+			vEngineState(deviceState.engine);
+			break;
+		case EXTERNAL_DEVICE_MICROSWITCH:
+			vMicroswitchState(deviceState.microswitch);
+			break;
+		case EXTERNAL_DEVICE_STOP_BUTTON:
+			vStopButtonState(deviceState.stopButton);
+			break;
+		case EXTERNAL_DEVICE_WATER_PUMP:
+			vWaterPumpState(deviceState.waterPump);
+			break;
+		default:
+			;
+			break;
+	}
   }
   /* USER CODE END 3 */
 }

@@ -11,7 +11,6 @@
 #include "main.h"
 
 #define DEVICE_NUMBER 	6
-#define DEVICE_ERROR	1
 
 enum
 {
@@ -21,10 +20,17 @@ enum
 	EXTERNAL_DEVICE_MICROSWITCH,
 	EXTERNAL_DEVICE_STOP_BUTTON,
 	EXTERNAL_DEVICE_WATER_PUMP,
-	ERROR_DEVICE
 };
 
-
+typedef struct
+{
+	uint8_t diodes;
+	uint8_t doubleButton;
+	uint8_t engine;
+	uint8_t microswitch;
+	uint8_t stopButton;
+	uint8_t waterPump;
+}externalDeviceStateTypedef;
 
 void vExternalDeviceError(uint8_t error);
 
