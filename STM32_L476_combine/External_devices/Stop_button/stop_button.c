@@ -26,18 +26,9 @@
  * @brief Stop button state.
  *******************************************************************************
  */
-void vStopButtonState(uint8_t state)
+void vStopButtonState()
 {
-	switch (state)
-	{
-		case STOP_BUTTON_OFF:
-
-			break;
-		case STOP_BUTTON_ON:
-
-			break;
-		default:
-			;
-			break;
-	}
+	deviceState.engine 		= 0;
+	deviceState.waterPump 	= 0;
+	HAL_TIM_Base_Start_IT(&htim2);
 }

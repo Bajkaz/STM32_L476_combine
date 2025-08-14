@@ -24,17 +24,12 @@
  * @brief USER STRUCT/ENUM
  *******************************************************************************
  */
-enum
-{
-	STOP_BUTTON_OFF,
-	STOP_BUTTON_ON
-};
 
 /**
  *******************************************************************************
  * @brief USER FUNCTIONS
  *******************************************************************************
  */
-void vStopButtonState(uint8_t state);
+void vStopButtonState();
 
 #endif /* STOP_BUTTON_STOP_BUTTON_H_ */
