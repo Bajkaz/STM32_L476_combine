@@ -49,8 +49,6 @@ extern "C" {
 
 /* USER CODE END EM */
 
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
@@ -65,8 +63,9 @@ void Error_Handler(void);
 #define DIOD_ORANGE_GPIO_Port GPIOE
 #define DIOD_GREEN_Pin GPIO_PIN_4
 #define DIOD_GREEN_GPIO_Port GPIOE
-#define CTRL_WATER_PUMP_Pin GPIO_PIN_0
-#define CTRL_WATER_PUMP_GPIO_Port GPIOA
+#define STOP_BUTTON_Pin GPIO_PIN_8
+#define STOP_BUTTON_GPIO_Port GPIOB
+#define STOP_BUTTON_EXTI_IRQn EXTI9_5_IRQn
 #define RESET_POURING_Pin GPIO_PIN_9
 #define RESET_POURING_GPIO_Port GPIOB
 #define RESET_POURING_EXTI_IRQn EXTI9_5_IRQn
