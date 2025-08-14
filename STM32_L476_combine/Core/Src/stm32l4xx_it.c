@@ -240,7 +240,7 @@ void EXTI9_5_IRQHandler(void)
   /* USER CODE END EXTI9_5_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(RESET_POURING_Pin);
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-
+  gDoubleButtonPouring = INCREASE_MIN;
   /* USER CODE END EXTI9_5_IRQn 1 */
 }
 
