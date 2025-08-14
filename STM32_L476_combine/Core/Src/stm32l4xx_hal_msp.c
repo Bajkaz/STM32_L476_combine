@@ -22,7 +22,7 @@
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "diodes.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,7 +97,9 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
     HAL_NVIC_EnableIRQ(TIM2_IRQn);
   /* USER CODE BEGIN TIM2_MspInit 1 */
     toggle = !toggle;
-    vDiodesStopButtonTriger();
+	vDiodesOnOff(DIOD_RED, 		toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
+	vDiodesOnOff(DIOD_ORANGE, 	toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
+	vDiodesOnOff(DIOD_GREEN, 	toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
   /* USER CODE END TIM2_MspInit 1 */
   }
 

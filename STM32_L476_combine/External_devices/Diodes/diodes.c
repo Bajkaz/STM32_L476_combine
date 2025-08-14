@@ -54,18 +54,6 @@ void vDiodesOnOff(diodesId_t diode, GPIO_PinState state)
 
 /**
  *******************************************************************************
- * @brief Diodes stop button blinky.
- *******************************************************************************
- */
-void vDiodesStopButtonTriger()
-{
-	vDiodesOnOff(DIOD_RED, toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
-	vDiodesOnOff(DIOD_ORANGE, toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
-	vDiodesOnOff(DIOD_GREEN, toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
-}
-
-/**
- *******************************************************************************
  * @brief Current diodes.
  *******************************************************************************
  */
