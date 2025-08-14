@@ -25,8 +25,8 @@
  * @brief USER DEFINE
  *******************************************************************************
  */
-#define DEVICE_NUMBER 	7
-#define DIODES_NUMBER	3
+#define DEVICE_NUMBER 			7
+#define DIODES_NUMBER			3
 
 /**
  *******************************************************************************
@@ -41,7 +41,8 @@ enum
 	EXTERNAL_DEVICE_MICROSWITCH,
 	EXTERNAL_DEVICE_STOP_BUTTON,
 	EXTERNAL_DEVICE_WATER_PUMP,
-	EXTERNAL_DEVICE_LCD
+	EXTERNAL_DEVICE_LCD,
+	EXTERNAL_DEVICE_RESET
 };
 
 typedef struct
@@ -59,6 +60,14 @@ typedef struct
 {
 	diodesId_t diodesID;
 }extneralDeviceCurrentTypedef;
+
+/**
+ *******************************************************************************
+ * @brief USER GLOBAL VARIABLES
+ *******************************************************************************
+ */
+extern uint8_t gExternalDevice;
+extern externalDeviceStateTypedef deviceState;
 
 /**
  *******************************************************************************
