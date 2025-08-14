@@ -43,13 +43,25 @@ static const diodePinConfig_t diodeConfig[DIODES_NUMBER] =
 
 /**
  *******************************************************************************
- * @brief Diodes ON/OFF.
+ * @brief Diode ON/OFF.
  *******************************************************************************
  */
 void vDiodesOnOff(diodesId_t diode, GPIO_PinState state)
 {
     deviceState.diodes[diode] = state; // zapamiętaj stan
     vDiodesCurrent(diode);             // od razu ustaw fizyczny pin
+}
+
+/**
+ *******************************************************************************
+ * @brief Diodes stop button blinky.
+ *******************************************************************************
+ */
+void vDiodesStopButtonTriger()
+{
+	vDiodesOnOff(DIOD_RED, toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
+	vDiodesOnOff(DIOD_ORANGE, toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
+	vDiodesOnOff(DIOD_GREEN, toggle ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }
 
 /**

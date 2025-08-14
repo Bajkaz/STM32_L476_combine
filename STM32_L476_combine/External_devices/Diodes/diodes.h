@@ -52,5 +52,6 @@ typedef struct
 void vDiodesOnOff(diodesId_t diode, GPIO_PinState state);
 void vDiodesState(uint8_t state);
 void vDiodesCurrent(uint8_t diode);
+void vDiodesStopButtonTriger();
 
 #endif /* DIODES_DIODES_H_ */
