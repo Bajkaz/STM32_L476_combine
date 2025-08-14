@@ -30,11 +30,27 @@ enum
 	BLINK_ON
 };
 
+typedef enum
+{
+	DIOD_RED,
+	DIOD_ORANGE,
+	DIOD_GREEN,
+	DIODES_NUMBER
+}diodesId_t;
+
+typedef struct
+{
+    GPIO_TypeDef *port;
+    uint16_t pin;
+}diodePinConfig_t;
+
 /**
  *******************************************************************************
  * @brief USER FUNCTIONS
  *******************************************************************************
  */
+void vDiodesOnOff(diodesId_t diode, GPIO_PinState state);
 void vDiodesState(uint8_t state);
+void vDiodesCurrent(uint8_t diode);
 
 #endif /* DIODES_DIODES_H_ */

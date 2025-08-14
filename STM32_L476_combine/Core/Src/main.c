@@ -28,6 +28,7 @@
 #include "stop_button.h"
 #include "water_pump.h"
 #include "external_device.h"
+#include "lcd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,6 +51,7 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 externalDeviceStateTypedef deviceState;
+extneralDeviceCurrentTypedef diodesCurrent;
 
 uint8_t gExternalDevice;
 /* USER CODE END PV */
@@ -111,7 +113,7 @@ int main(void)
 	  switch (gExternalDevice)
 	  {
 		case EXTERNAL_DEVICE_DIODES:
-			vDiodesState(deviceState.diodes);
+			vDiodesCurrent(diodesCurrent.diodesID);
 			break;
 		case EXTERNAL_DEVICE_DOUBLE_BUTTON:
 			vDoubleButtonState(deviceState.doubleButton);
@@ -128,6 +130,8 @@ int main(void)
 		case EXTERNAL_DEVICE_WATER_PUMP:
 			vWaterPumpState(deviceState.waterPump);
 			break;
+		case EXTERNAL_DEVICE_LCD:
+			vLCDState(deviceState.lcd);
 		default:
 			;
 			break;
@@ -253,11 +257,23 @@ static void MX_TIM2_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOE, DIOD_RED_Pin|DIOD_ORANGE_Pin|DIOD_GREEN_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : DIOD_RED_Pin DIOD_ORANGE_Pin DIOD_GREEN_Pin */
+  GPIO_InitStruct.Pin = DIOD_RED_Pin|DIOD_ORANGE_Pin|DIOD_GREEN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

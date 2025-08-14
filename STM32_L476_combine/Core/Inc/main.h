@@ -59,6 +59,12 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define DIOD_RED_Pin GPIO_PIN_2
+#define DIOD_RED_GPIO_Port GPIOE
+#define DIOD_ORANGE_Pin GPIO_PIN_3
+#define DIOD_ORANGE_GPIO_Port GPIOE
+#define DIOD_GREEN_Pin GPIO_PIN_4
+#define DIOD_GREEN_GPIO_Port GPIOE
 #define CTRL_WATER_PUMP_Pin GPIO_PIN_0
 #define CTRL_WATER_PUMP_GPIO_Port GPIOA
 

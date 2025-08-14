@@ -18,13 +18,15 @@
  *******************************************************************************
  */
 #include "main.h"
+#include "diodes.h"
 
 /**
  *******************************************************************************
  * @brief USER DEFINE
  *******************************************************************************
  */
-#define DEVICE_NUMBER 	6
+#define DEVICE_NUMBER 	7
+#define DIODES_NUMBER	3
 
 /**
  *******************************************************************************
@@ -39,17 +41,24 @@ enum
 	EXTERNAL_DEVICE_MICROSWITCH,
 	EXTERNAL_DEVICE_STOP_BUTTON,
 	EXTERNAL_DEVICE_WATER_PUMP,
+	EXTERNAL_DEVICE_LCD
 };
 
 typedef struct
 {
-	uint8_t diodes;
+	GPIO_PinState diodes[DIODES_NUMBER];
 	uint8_t doubleButton;
 	uint8_t engine;
 	uint8_t microswitch;
 	uint8_t stopButton;
 	uint8_t waterPump;
+	uint8_t lcd;
 }externalDeviceStateTypedef;
+
+typedef struct
+{
+	diodesId_t diodesID;
+}extneralDeviceCurrentTypedef;
 
 /**
  *******************************************************************************
