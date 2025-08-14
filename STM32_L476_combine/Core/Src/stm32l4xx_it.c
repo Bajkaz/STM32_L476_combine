@@ -57,7 +57,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-
+extern TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -236,12 +236,35 @@ void EXTI1_IRQHandler(void)
 void EXTI9_5_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
-
+	uint16_t checkPin;
   /* USER CODE END EXTI9_5_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(STOP_BUTTON_Pin);
   HAL_GPIO_EXTI_IRQHandler(RESET_POURING_Pin);
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-  gDoubleButtonPouring = INCREASE_MIN;
+  if(checkPin == RESET_POURING_Pin)
+  {
+	  gDoubleButtonPouring = INCREASE_MIN;
+  }
+  else if(checkPin == STOP_BUTTON_Pin)
+  {
+	  gExternalDevice = EXTERNAL_DEVICE_STOP_BUTTON;
+  }
+
   /* USER CODE END EXTI9_5_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM2 global interrupt.
+  */
+void TIM2_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM2_IRQn 0 */
+
+  /* USER CODE END TIM2_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim2);
+  /* USER CODE BEGIN TIM2_IRQn 1 */
+
+  /* USER CODE END TIM2_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
