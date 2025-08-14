@@ -21,14 +21,21 @@
 
 /**
  *******************************************************************************
- * @brief USER INCLUDES
+ * @brief USER DEFINE
  *******************************************************************************
  */
-#define BUTTON_NUMBER 	2
 #define INCREASE_MAX 	40
 #define INCREASE_MIN 	10
 #define INCREASE_UP		10
 #define INCREASE_DOWN	10
+
+/**
+ *******************************************************************************
+ * @brief USER GLOBAL VARIABLES
+ *******************************************************************************
+ */
+extern uint8_t gDoubleButtonPouring;
+
 /**
  *******************************************************************************
  * @brief USER STRUCT/ENUM
@@ -40,12 +47,6 @@ enum
 	CLICK_UP,
 	CLICK_DOWN
 };
-
-typedef enum
-{
-	BUTTON_UP,
-	BUTTON_DOWN
-}buttonId_t;
 
 typedef struct
 {
