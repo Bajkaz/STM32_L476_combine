@@ -16,13 +16,13 @@
  */
 #include "stop_button.h"
 #include "external_device.h"
-
+#include "timer.h"
 /**
  *******************************************************************************
  * @brief USER GLOBAL VARIABLES
  *******************************************************************************
  */
-extern TIM_HandleTypeDef htim2;
+
 /**
  *******************************************************************************
  * @brief USER FUNCTIONS
@@ -37,5 +37,5 @@ void vStopButtonState()
 {
 	deviceState.engine 		= 0;
 	deviceState.waterPump 	= 0;
-	HAL_TIM_Base_Start_IT(&htim2);
+	HAL_TIM_Base_Start_IT(&gTIM2);
 }
