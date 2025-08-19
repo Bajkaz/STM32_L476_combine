@@ -112,8 +112,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  vTimerInit(gTIM2, htim2);
-	  vTimerInit(gTIM3, htim3);
+	  vTimerInit(&gTIM2, &htim2);
+	  vTimerInit(&gTIM3, &htim3);
 
 	  switch (gExternalDevice)
 	  {

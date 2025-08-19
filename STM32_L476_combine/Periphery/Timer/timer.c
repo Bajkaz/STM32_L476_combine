@@ -33,9 +33,9 @@ TIM_HandleTypeDef gTIM3;
  * @brief Timer init.
  *******************************************************************************
  */
-void vTimerInit(TIM_HandleTypeDef globalTimer, TIM_HandleTypeDef defaultTimer)
+void vTimerInit(TIM_HandleTypeDef *globalTimer, TIM_HandleTypeDef *defaultTimer)
 {
-	globalTimer = defaultTimer;
+	*globalTimer = *defaultTimer;
 }
 
 
