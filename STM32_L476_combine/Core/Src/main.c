@@ -29,6 +29,7 @@
 #include "water_pump.h"
 #include "external_device.h"
 #include "lcd.h"
+#include "timer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,8 +49,10 @@
 
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
+uint32_t gWaterPumpTime = 0;
 
 extneralDeviceCurrentTypedef diodesCurrent;
 /* USER CODE END PV */
@@ -58,6 +61,7 @@ extneralDeviceCurrentTypedef diodesCurrent;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -96,6 +100,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -107,6 +112,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  vTimerInit(gTIM2, htim2);
+	  vTimerInit(gTIM3, htim3);
 
 	  switch (gExternalDevice)
 	  {
@@ -126,7 +133,7 @@ int main(void)
 			vStopButtonState();
 			break;
 		case EXTERNAL_DEVICE_WATER_PUMP:
-			vWaterPumpState(deviceState.waterPump);
+			vWaterPumpState(deviceState.waterPump, gWaterPumpTime);
 			break;
 		case EXTERNAL_DEVICE_LCD:
 			vLCDState(deviceState.lcd);
@@ -237,6 +244,66 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_SlaveConfigTypeDef sSlaveConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 7999;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 9999;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_OC_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sSlaveConfig.SlaveMode = TIM_SLAVEMODE_EXTERNAL1;
+  sSlaveConfig.InputTrigger = TIM_TS_ITR0;
+  if (HAL_TIM_SlaveConfigSynchro(&htim3, &sSlaveConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_TIMING;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_OC_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+  HAL_TIM_MspPostInit(&htim3);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -249,6 +316,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
