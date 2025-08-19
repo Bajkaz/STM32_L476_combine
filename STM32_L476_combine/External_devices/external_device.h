@@ -69,6 +69,7 @@ typedef struct
 extern uint8_t gExternalDevice;
 extern externalDeviceStateTypedef deviceState;
 
+
 /**
  *******************************************************************************
  * @brief USER FUNCTIONS

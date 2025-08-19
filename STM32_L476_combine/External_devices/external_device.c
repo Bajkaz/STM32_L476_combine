@@ -22,6 +22,8 @@
  *******************************************************************************
  */
 uint8_t gExternalDevice;
+
+
 externalDeviceStateTypedef deviceState;
 
 /**
@@ -38,3 +40,4 @@ void vExternalDeviceError(uint8_t error)
 {
 ;
 }
+
