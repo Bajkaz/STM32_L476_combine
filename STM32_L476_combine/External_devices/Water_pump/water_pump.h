@@ -35,6 +35,6 @@ enum
  * @brief USER FUNCTIONS
  *******************************************************************************
  */
-void vWaterPumpState(uint8_t state);
+void vWaterPumpState(uint8_t state, uint32_t waterPumpTime);
 
 #endif /* WATER_PUMP_WATER_PUMP_H_ */

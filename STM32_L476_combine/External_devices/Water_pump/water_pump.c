@@ -15,6 +15,14 @@
  *******************************************************************************
  */
 #include "water_pump.h"
+#include "external_device.h"
+#include "timer.h"
+
+/**
+ *******************************************************************************
+ * @brief USER GLOBAL VARIABLES
+ *******************************************************************************
+ */
 
 /**
  *******************************************************************************
@@ -23,18 +31,40 @@
  */
 /**
  *******************************************************************************
+ * @brief Water pump start.
+ *******************************************************************************
+ */
+void vWaterPumpStart(uint32_t time)
+{
+	__HAL_TIM_SET_COUNTER(&gTIM3, 0);
+	__HAL_TIM_SET_COMPARE(&gTIM3,TIM_CHANNEL_1 ,time);
+	HAL_TIM_OC_Start(&gTIM3, TIM_CHANNEL_1);
+}
+
+/**
+ *******************************************************************************
+ * @brief Water pump stop.
+ *******************************************************************************
+ */
+void vWaterPumpStop(void)
+{
+	HAL_TIM_OC_Stop(&gTIM3, TIM_CHANNEL_1);
+}
+
+/**
+ *******************************************************************************
  * @brief Water pump state.
  *******************************************************************************
  */
-void vWaterPumpState(uint8_t state)
+void vWaterPumpState(uint8_t state, uint32_t waterPumpTime)
 {
 	switch (state)
 	{
 		case WATER_PUMP_OFF:
-
+			vWaterPumpStop();
 			break;
 		case WATER_PUMP_ON:
-
+			vWaterPumpStart(waterPumpTime);
 			break;
 		default:
 			;
