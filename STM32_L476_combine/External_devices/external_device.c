@@ -15,6 +15,14 @@
  *******************************************************************************
  */
 #include "external_device.h"
+#include "diodes.h"
+#include "double_button.h"
+#include "engine.h"
+#include "lcd.h"
+#include "microswitch.h"
+#include "stop_button.h"
+#include "water_pump.h"
+#include "time.h"
 
 /**
  *******************************************************************************
@@ -22,7 +30,6 @@
  *******************************************************************************
  */
 uint8_t gExternalDevice;
-
 
 externalDeviceStateTypedef deviceState;
 
@@ -41,3 +48,12 @@ void vExternalDeviceError(uint8_t error)
 ;
 }
 
+/**
+ *******************************************************************************
+ * @brief External devices main control.
+ *******************************************************************************
+ */
+void vExternalDeviceMainControl()
+{
+
+}
