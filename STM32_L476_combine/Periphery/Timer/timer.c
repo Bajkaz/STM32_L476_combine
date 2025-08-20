@@ -38,4 +38,12 @@ void vTimerInit(TIM_HandleTypeDef *globalTimer, TIM_HandleTypeDef *defaultTimer)
 	*globalTimer = *defaultTimer;
 }
 
+/**
+ *******************************************************************************
+ * @brief Read time.
+ *******************************************************************************
+ */
+uint32_t uTimerReadTime()
+{
 
+}
