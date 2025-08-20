@@ -29,6 +29,12 @@
 #define INCREASE_UP		10
 #define INCREASE_DOWN	10
 
+#define BUTTON_COUNTER_MAX 	50
+#define BUTTON_COUNTER_MIN	10
+#define BUTTON_COUNTER_UP	10
+#define BUTTON_COUNTER_DWON	(-10)
+#define BUTTON_COUNTER_INIT 10
+
 /**
  *******************************************************************************
  * @brief USER GLOBAL VARIABLES

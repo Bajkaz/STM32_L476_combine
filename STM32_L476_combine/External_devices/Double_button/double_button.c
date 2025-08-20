@@ -24,11 +24,8 @@
  *******************************************************************************
  */
 uint8_t gDoubleButtonPouring;
-/**
- *******************************************************************************
- * @brief USER FUNCTIONS
- *******************************************************************************
- */
+uint8_t gDoubleButtonCounter = BUTTON_COUNTER_INIT;
+
 /**
  *******************************************************************************
  * @brief USER FUNCTIONS
@@ -87,14 +84,58 @@ void vDoubleButtonClickUp()
  * @brief Double button state.
  *******************************************************************************
  */
+void vDoubleButtonCounter(uint8_t state)
+{
+	switch (state)
+	{
+		case CLICK_UP:
+			if(gDoubleButtonCounter < BUTTON_COUNTER_MAX)
+				gDoubleButtonCounter += BUTTON_COUNTER_UP;
+			break;
+		case CLICK_DOWN:
+			if(gDoubleButtonCounter > BUTTON_COUNTER_MIN)
+				gDoubleButtonCounter -= BUTTON_COUNTER_DWON;
+			break;
+		case CLICK_OFF:
+			gDoubleButtonCounter = BUTTON_COUNTER_INIT;
+			break;
+		default:
+			break;
+	}
+}
+
+/**
+ *******************************************************************************
+ * @brief Double button counter return.
+ *******************************************************************************
+ */
+uint8_t uDoubleButtonReturnCounter()
+{
+	return gDoubleButtonCounter;
+}
+
+/**
+ *******************************************************************************
+ * @brief Double button state.
+ *******************************************************************************
+ */
 void vDoubleButtonState(uint8_t button)
 {
-	if(button == CLICK_UP)
+	switch (button)
 	{
-		vDoubleButtonClickUp();
-	}
-	else if(button == CLICK_DOWN)
-	{
-		vDoubleButtonClickDown();
+		case CLICK_UP:
+			vDoubleButtonClickUp();
+			vDoubleButtonCounter(button);
+			break;
+		case CLICK_DOWN:
+			vDoubleButtonClickDown();
+			vDoubleButtonCounter(button);
+			break;
+		case CLICK_OFF:
+			vDoubleButtonCounter(button);
+			break;
+		default:
+			;
+			break;
 	}
 }

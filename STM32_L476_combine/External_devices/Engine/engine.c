@@ -23,6 +23,16 @@
  */
 /**
  *******************************************************************************
+ * @brief USER FUNCTIONS
+ *******************************************************************************
+ */
+void vEngineControl(uint8_t pinState)
+{
+	HAL_GPIO_WritePin(ENGINE_CONTROL_GPIO_Port, ENGINE_CONTROL_Pin, pinState);
+}
+
+/**
+ *******************************************************************************
  * @brief Engine state.
  *******************************************************************************
  */
@@ -31,10 +41,10 @@ void vEngineState(uint8_t state)
 	switch (state)
 	{
 		case ENGINE_OFF:
-
+			vEngineControl(ENGINE_OFF);
 			break;
 		case ENGINE_ON:
-
+			vEngineControl(ENGINE_ON);
 			break;
 		default:
 			;
