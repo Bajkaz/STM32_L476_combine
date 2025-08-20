@@ -26,6 +26,16 @@
  * @brief Diodes state.
  *******************************************************************************
  */
+void vLCDDisplay()
+{
+
+}
+
+/**
+ *******************************************************************************
+ * @brief Diodes state.
+ *******************************************************************************
+ */
 void vLCDState(uint8_t state)
 {
 	switch (state)
@@ -34,7 +44,7 @@ void vLCDState(uint8_t state)
 
 			break;
 		case LCD_ON:
-
+			vLCDDisplay();
 			break;
 		default:
 			;
