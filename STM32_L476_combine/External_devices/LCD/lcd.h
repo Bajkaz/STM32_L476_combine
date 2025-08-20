@@ -1,9 +1,9 @@
 /**
  ******************************************************************************
  *
- * @file    lcd.c
+ * @file    lcd.h
  *
- * @brief   LCD functions.
+ * @brief   LCD library.
  *
  * @author  Szymon Szczukowski
  *

@@ -73,5 +73,10 @@ typedef struct
  *******************************************************************************
  */
 void vDoubleButtonState(uint8_t state);
+uint8_t uDoubleButtonReturnCounter();
+void vDoubleButtonCounter(uint8_t state);
+void vDoubleButtonClickUp();
+void vDoubleButtonClickDown();
+void vDoubleButtonReset();
 
 #endif /* DOUBLE_BUTTON_DOUBLE_BUTTON_H_ */
